@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create public directory
+        run: |
+          rm -rf public || true
+          mkdir -p public
+          # Copy site files (adjust as needed)
+          cp index.html public/ || true
+          cp case-*.html public/ || true
+          cp contact.html public/ || true
+          cp experiencia.html public/ || true
+          mkdir -p public/assets
+          cp -R assets public/assets || true
+          mkdir -p public/styles
+          cp -R styles public/styles || true
+          mkdir -p public/components
+          cp -R components public/components || true
+          mkdir -p public/scripts
+          cp -R scripts public/scripts || true
+
+      - name: Configure pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
