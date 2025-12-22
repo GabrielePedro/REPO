@@ -4,7 +4,7 @@
 
 > Replace OWNER and REPO in the badge URL below with your GitHub account and repository name.
 
-![Check inline styles](https://github.com/OWNER/REPO/actions/workflows/check-inline-styles.yml/badge.svg)
+![Check inline styles](https://github.com/GabrielePedro/REPO/actions/workflows/check-inline-styles.yml/badge.svg)
 
 Arquivos iniciais do site com 4 páginas: Home, Case Yampi, Case Atlas, Case Mercado Pago.
 
