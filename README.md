@@ -1,7 +1,6 @@
 # Site — Cases
 
 > CI: GitHub Actions — Check inline styles
-
 > Replace OWNER and REPO in the badge URL below with your GitHub account and repository name.
 
 ![Check inline styles](https://github.com/GabrielePedro/REPO/actions/workflows/check-inline-styles.yml/badge.svg)
