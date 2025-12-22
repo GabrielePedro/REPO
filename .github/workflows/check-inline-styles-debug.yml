@@ -1,0 +1,25 @@
+name: Debug Check inline styles
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List workspace
+        run: |
+          echo "--- ls -la workspace root ---"
+          ls -la
+          echo "--- ls -la scripts ---"
+          ls -la scripts || true
+      - name: Show checker script
+        run: sed -n '1,200p' scripts/check-inline-styles.sh || true
+      - name: Show shell and run bash -x
+        run: |
+          echo "Shell: $(which bash)" 
+          bash --version || true
+          chmod +x scripts/check-inline-styles.sh || true
+          echo "--- run checker with -x ---"
+          bash -x ./scripts/check-inline-styles.sh
