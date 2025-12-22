@@ -1,0 +1,106 @@
+/* Import fonts (Krona One for headings, Red Hat Display for body) */
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Red+Hat+Display:wght@400;700&display=swap');
+
+/* Tokens gerados a partir dos valores fornecidos pelo usuário
+   Observações:
+   - Unificamos os tokens em um único :root para facilitar manutenção.
+   - Corrigimos alguns typos nos nomes das variáveis (ex.: gray, light).
+   - Mantivemos comentários/aliases quando aplicável para compatibilidade.
+*/
+:root {
+  /* cores */
+  --system-text-black: #2f3640;
+  --system-background-medium: #ecf0f7;
+  --brand-blue: #1e70e5;
+  --brand-orange: #fd990d;
+  --system-componentes-blue: #b4ccef;
+  /* corrigido: 'gay' -> 'gray' */
+  --system-componentes-gray: #d1d8e1;
+  /* alias legada (mantido para compatibilidade) */
+  --system-componentes-gay: var(--system-componentes-gray);
+  --system-background-pure: #ffffff;
+  --yampi-purple-dark: #522fad;
+  --yampi-purple-pure: #6e46d8;
+  --yampi-pink-pure: #fc50af;
+  --yampi-purple-high: #7748f1;
+  --yampi-purple-light: #ddd0ff;
+
+  /* Atlas tokens - simplificado (removido duplicação 'atlas-atlas') */
+  --atlas-purple-pure: #7a2bde;
+  --atlas-purple-pure-50: #7a2bde;
+  --atlas-coral-pure: #e25352;
+  --atlas-purple-light: #eee1ff;
+  /* aliases legados para compatibilidade */
+  --atlas-atlas-purple-pure: var(--atlas-purple-pure);
+  --atlas-atlas-purple-pure-50: var(--atlas-purple-pure-50);
+  --atlas-atlas-coral-pure: var(--atlas-coral-pure);
+  --atlas-atlas-purple-light: var(--atlas-purple-light);
+
+  --mercado-pago-yellow-pure: #ffe700;
+  --mercado-pago-blue-light: #50b4e9;
+  --mercado-pago-blue-dark: #28316b;
+  --mercado-pago-blue-extra-light: #50b4e9;
+  /* corrigido: extra-ligh -> extra-light */
+  --mercado-pago-yellow-extra-light: #ffe700;
+  --mercado-pago-blue-extra-light-20: #50b4e9;
+  --mercado-pago-yellow-extra-light-30: #ffe700;
+
+  /* espaçamentos */
+  --space-0: 0px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-50: 50px;
+  --space-75: 75px;
+  --space-80: 80px;
+  --space-100: 100px;
+  --space-150: 150px;
+  --space-200: 200px;
+
+  /* tipografia */
+  --font-family-headings: 'Krona One', Arial, sans-serif;
+  --font-family-body: 'Red Hat Display', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+
+  /* typography sizes */
+  --case-title-size: 40px;
+  --case-lead-size: 20px;
+  --case-pill-size: 16px;
+
+  /* hero radii (map to hero-variant-* used in CSS) */
+  --radius-hero-a: 100px 24px 24px 100px;
+  --radius-hero-b: 24px 100px 100px 24px;
+  --radius-hero-c: 100px 24px 24px 100px;
+
+  /* contact button tokens */
+  --cb-banner-width: 250px;
+  --cb-height: 64px;
+  --cb-bar-height: 4px;
+  --cb-gap: 10px;
+  --cb-bar-default: var(--system-componentes-blue);
+  --cb-bar-active: var(--brand-blue);
+
+  /* layout widths used in cases */
+  --cases-row-width: 1140px;
+  --case-hero-width: 570px;
+  --case-hero-height: 500px;
+
+  /* layout and breakpoints */
+  --layout-max-width: 1200px;
+  --bp-wide: 1200px;
+  --bp-desktop: 1000px;
+  --bp-tablet: 700px;
+  --bp-mobile: 420px;
+
+  /* pill (case subtitle) tokens */
+  --pill-font-size: 16px;
+  --pill-font-size-mobile: 14px;
+  --pill-font-weight: 700;
+  --pill-line-height: 1.2;
+  --pill-letter-spacing: 0.16px;
+  --pill-padding-vertical: 4px;
+  --pill-padding-horizontal: 8px;
+}
