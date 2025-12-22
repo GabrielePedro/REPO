@@ -1,0 +1,192 @@
+@import "../_tokens.css";
+
+.work-section { background: var(--system-background-pure); }
+.work-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; padding-block: 150px; }
+.work-inner { display:flex; flex-direction:column; gap: 100px; align-items:flex-start; }
+
+.work-top { width:100%; display:flex; justify-content:space-between; gap: clamp(24px, 10vw, 200px); align-items:flex-start; }
+.work-top .title-stack { max-width:286px; width:100%; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:0; position: relative; }
+.work-top .title-stack::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: -24px;
+  width: 101px;
+  height: 96px;
+  /* use mask so we can color the SVG using CSS variables */
+  background-color: var(--brand-blue);
+  -webkit-mask-image: url('/assets/icons/asterisco.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url('/assets/icons/asterisco.svg');
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  opacity: 1;
+  pointer-events: none;
+  z-index: -1;
+}
+.work-top .title-stack { z-index: 1; }
+.work-top .title-stack .line1 { font-family: var(--font-family-headings); font-size:40px; color: var(--system-text-black); font-weight:400; line-height:1.1; letter-spacing:-2px; }
+.work-top .title-stack .line2-wrap { padding-left:67px; display:block; }
+
+/* modifier for the case page two-line title */
+.title-stack--two-line { max-width: 262px; height: 96px; position: relative; }
+.title-stack--two-line .title-container { position: absolute; left: 0; top: 4px; width: 100%; height: 96px; }
+.title-stack--two-line .title-line1 { width: 100%; font-family: var(--font-family-headings); font-size:40px; color: var(--system-text-black); font-weight:400; line-height:1.10; letter-spacing:-2px; }
+.title-stack--two-line .title-line2-wrap { width: 100%; padding-left: 56px; display:block; }
+.title-stack--two-line .title-line2 { font-family: var(--font-family-headings); font-size:40px; color: var(--system-text-black); font-weight:400; line-height:1.10; letter-spacing:-2px; }
+.work-top .desc { max-width:654px; width:100%; text-align:right; font-family: var(--font-family-body); font-size:20px; font-weight:400; line-height:1.4; color:var(--system-text-black); }
+
+.work-cards { width:100%; display:flex; gap:48px; flex-wrap:wrap; justify-content:space-between; }
+.work-card { flex: 0 1 347px; display:flex; flex-direction:column; gap:0px; }
+
+@media (min-width: var(--bp-desktop)) {
+  /* Prefer a single row on desktop-sized viewports */
+  .work-cards { flex-wrap: nowrap; justify-content: flex-start; }
+  .work-card { margin-right: 0; }
+}
+
+/* Case pages need rounded cards and overflow hidden for image corners */
+.case-page .work-card { border-radius:24px; overflow:hidden; }
+
+/* Home (Como trabalho) specific badge and text styles -- do not affect case pages */
+.work-section .work-card .badge {
+  /* outer circle should be 80px icon + 20px padding each side = 120px */
+  width: 120px;
+  height: 120px;
+  box-sizing: content-box; /* keep padding outside the specified width/height */
+  padding: 20px;
+  background: #B4CCEF; /* System-Componentes-Blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px; /* circular */
+  margin-bottom: 24px;
+}
+.work-section .work-card .badge img { width: 80px; height: 80px; object-fit: contain; display: block; }
+
+/* Restore original Home card title and copy styles (scoped to work-section) */
+.work-section .work-card .card-title { font-family: var(--font-family-headings); font-size:24px; color: var(--brand-blue); font-weight:700; margin:0 0 16px 0; }
+.work-section .work-card .card-copy { font-family: var(--font-family-body); font-size:20px; color: var(--system-text-black); line-height:1.4; margin:0; }
+
+/* Utility mappings used by the imported snippet (scoped to case pages) */
+.case-page .work-card .w-80 { max-width: 347px; width: 100%; }
+.case-page .work-card .h-48 { height: 192px; }
+.case-page .work-card .w-96 { max-width: 353px; width: 100%; }
+.case-page .work-card .h-80 { height: 342px; }
+.case-page .work-card .relative { position: relative; }
+.case-page .work-card .absolute { position: absolute; }
+.case-page .work-card .left-\[\-3px\] { left: -3px; }
+.case-page .work-card .top-\[\-6px\] { top: -6px; }
+.case-page .work-card .overflow-hidden { overflow: hidden; }
+.case-page .work-card .rounded-tl-2xl { border-top-left-radius: 16px; }
+.case-page .work-card .rounded-tr-2xl { border-top-right-radius: 16px; }
+.case-page .work-card .rounded-bl-3xl { border-bottom-left-radius: 24px; }
+.case-page .work-card .rounded-br-3xl { border-bottom-right-radius: 24px; }
+.case-page .work-card .p-6 { padding: 24px; }
+.case-page .work-card .pl-2 { padding-left: 8px; }
+.case-page .work-card .py-1\.5 { padding-top: 6px; padding-bottom: 6px; }
+.case-page .work-card .px-1 { padding-left:4px; padding-right:4px; }
+.case-page .work-card .gap-4 { gap: 16px; }
+.case-page .work-card .gap-2 { gap: 8px; }
+.case-page .work-card .gap-1 { gap: 4px; }
+.case-page .work-card .text-sm { font-size: 14px; }
+.case-page .work-card .text-xl { font-size: 20px; }
+.case-page .work-card .text-base { font-size: 16px; }
+.case-page .work-card .font-bold { font-weight: 700; }
+.case-page .work-card .font-normal { font-weight: 400; }
+.case-page .work-card .leading-4 { line-height: 1; }
+.case-page .work-card .leading-5 { line-height: 1.25; }
+.case-page .work-card .leading-8 { line-height: 1.1; }
+.case-page .work-card .inline-flex { display: inline-flex; }
+.case-page .work-card .self-stretch { align-self: stretch; }
+.case-page .work-card .flex { display: flex; }
+.case-page .work-card .flex-1 { flex: 1 1 auto; }
+.case-page .work-card .justify-center { justify-content: center; }
+.case-page .work-card .justify-start { justify-content: flex-start; }
+.case-page .work-card .items-center { align-items: center; }
+.case-page .work-card .items-start { align-items: flex-start; }
+.case-page .work-card .rounded\-tl\-2xl { border-top-left-radius: 16px; }
+
+
+.case-page .work-card .card-media { width: 100%; height: 200px; overflow: hidden; border-radius: 16px 16px 0 0; position: relative; }
+.case-page .work-card .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; left: 0; top: 0; }
+
+/* bottom body with padding and rounded bottom corners */
+
+.case-page .work-card .card-body { width: 100%; padding: 24px; background: #ECF0F7; border-radius: 0 0 24px 24px; box-sizing: border-box; display:flex; flex-direction:column; gap:24px; }
+.case-page .work-card .card-meta { display:flex; flex-direction:column; gap:8px; }
+.case-page .work-card .card-badge { display:inline-flex; align-items:center; justify-content:center; padding:0 4px; background: #1D70E5; color: #FFFFFF; font-family: 'Red Hat Display', sans-serif; font-weight:700; font-size:14px; line-height:1.2; letter-spacing:0.42px; border-radius:6px; width: fit-content; }
+.case-page .work-card .card-title { font-family: 'Krona One', sans-serif; font-size:22px; color: #1D70E5; font-weight:400; margin:0; line-height:1.4; letter-spacing:-1.1px; }
+.case-page .work-card .card-copy { font-family: 'Red Hat Display', sans-serif; font-size:16px; color:#2E3640; line-height:1.3; letter-spacing:0.16px; max-width:299px; margin:0; }
+
+/* divider bars around CTA */
+.case-page .work-card .card-divider { width:100%; height:4px; background: #B3CCEE; margin:24px 0; border-radius:2px; }
+
+.case-page .work-card .card-cta { display:block; width:100%; }
+.case-page .work-card .cta-inner { display:flex; align-items:center; gap:12px; width:100%; }
+.case-page .work-card .cta-text { flex:1; font-family: 'Red Hat Display', sans-serif; font-size:16px; font-weight:700; color: #2E3640; padding:6px 8px 7px 8px; }
+.case-page .work-card .cta-icon { width:40px; height:40px; background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)); border-radius:8px; display:flex; align-items:center; justify-content:center; }
+
+/* Ensure contact-button icons inside work cards use the standard 40x40 size */
+.work-section .contact-button { width: 100%; box-sizing: border-box; margin-left: 0; display:block; }
+.work-section .contact-button .cb-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; }
+.work-section .contact-button .cb-label { font-family: 'Red Hat Display', sans-serif; font-size:16px; font-weight:700; letter-spacing:0.16px; color:#2E3640; }
+.work-section .contact-button .cb-icon img, .work-section .contact-button .cb-icon svg { width:40px; height:40px; display:block; }
+
+/* toggle between default and white arrow on hover inside work cards */
+.work-section .contact-button .cb-icon img.icon-hover { display: none; }
+.work-section .contact-button:hover .cb-icon img.icon-default { display: none; }
+.work-section .contact-button:hover .cb-icon img.icon-hover { display: block; }
+
+/* ensure inline SVG icons inside contact buttons scale to 40x40 */
+.work-section .contact-button .cb-icon svg { width: 40px; height: 40px; display:block; }
+.work-section .contact-button .cb-icon svg path { fill: #B4CCEF; transition: fill 180ms ease; }
+.work-section .contact-button:hover .cb-icon svg path,
+.work-section .contact-button:focus-within .cb-icon svg path { fill: #ffffff; }
+
+
+@media (max-width:1000px) {
+  .work-outer { padding: 48px; }
+  .work-top { flex-direction: column; gap: 24px; }
+  .work-top .desc { text-align:left; width:100%; }
+  .work-cards { width:100%; flex-direction:column; gap:24px; }
+  .work-card { width:100%; }
+}
+
+@media (max-width:600px) {
+  .title-stack--two-line { width: 100%; height: auto; }
+  .title-stack--two-line .title-container { position: static; top: auto; left: auto; width: 100%; height: auto; padding-top: 4px; }
+  .title-stack--two-line .title-line1, .title-stack--two-line .title-line2 { font-size: 32px; line-height: 1.05; }
+  .title-stack--two-line .title-line2-wrap { padding-left: 24px; }
+
+  .work-cards { gap: 16px; }
+  .work-card .card-media { width: 100%; height: auto; }
+  .work-card .card-media img { width: 100%; height: auto; position: relative; left: 0; top: 0; object-fit: cover; }
+  .work-card .card-body { padding: 16px; }
+}
+
+/* Experiência section (follows the 'Como Trabalho' block) */
+.experience-section { background: var(--system-background-medium); }
+.experience-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; padding-block: 150px; }
+.experience-inner { display:flex; flex-direction:column; gap: 40px; align-items:flex-start; }
+.experience-title { font-family: var(--font-family-headings); font-size:40px; color: var(--system-text-black); font-weight:400; line-height:1.1; letter-spacing:-2px; margin:0; }
+.experience-list { width:100%; display:flex; flex-direction:column; gap:8px; }
+.experience-item { width:100%; padding: 32px 0; display:flex; align-items:center; gap:50px; box-sizing:border-box; background: var(--system-background-medium); box-shadow: 0 4px 0 0 var(--system-componentes-blue); }
+.experience-item .exp-year { max-width:140px; width:100%; display:flex; flex-direction:column; gap:4px; }
+.experience-item .exp-year-line { font-family: var(--font-family-headings); font-size:32px; color: var(--system-componentes-blue); font-weight:400; line-height:1; letter-spacing:-1.6px; }
+.experience-item .exp-role { font-family: var(--font-family-headings); font-size:32px; color: var(--brand-blue); font-weight:400; line-height:1; letter-spacing:-1.6px; }
+.experience-item .exp-company { margin-left: auto; font-family: var(--font-family-headings); font-size:32px; color: var(--system-text-black); font-weight:400; line-height:1; letter-spacing:-1.6px; text-align:right; }
+.experience-cta-row { width:100%; display:flex; gap:24px; }
+.exp-cta { flex:1 1 auto; display:flex; flex-direction:column; gap:8px; }
+.exp-download { font-family: var(--font-family-body); font-size:20px; font-weight:600; color: var(--system-text-black); text-decoration:none; padding:6px 8px; display:inline-block; }
+.exp-divider { width:100%; height:4px; background: var(--system-componentes-blue); }
+.exp-links { display:flex; gap:24px; }
+.exp-link { font-family: var(--font-family-body); font-size:20px; font-weight:600; color: var(--system-text-black); text-decoration:none; padding:6px 8px; }
+
+@media (max-width:1000px) {
+  .experience-outer { padding: 48px; }
+  .experience-item { flex-direction: column; align-items:flex-start; }
+  .experience-item .exp-company { margin-left: 0; text-align:left; }
+  .experience-cta-row { flex-direction:column; }
+}

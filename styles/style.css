@@ -1,0 +1,263 @@
+@import "./_tokens.css";
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Red+Hat+Display:wght@300;400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-family-body);
+  color: var(--system-text-black);
+  background: var(--system-background-pure);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.container { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; }
+/* When a page is a case page, remove top padding from the container so
+  banners can sit flush under the header without affecting other pages. */
+  .container.case-page { padding-top: var(--space-0); padding-bottom: var(--space-24); }
+.site-header { background: var(--system-background-medium); border-bottom: 1px solid var(--system-componentes-gray); position: relative; z-index: 20; }
+.site-header .container { padding-bottom: 0; }
+.site-header { border-bottom: none; }
+.site-header .container { display:flex; align-items:center; justify-content:space-between; }
+.brand { margin: 0; font-size: 1.1rem; font-family: var(--font-family-headings); }
+.brand a { color: inherit; text-decoration:none; }
+nav a { margin-left: var(--space-24); color: var(--system-text-black); text-decoration:none; }
+
+.hero { padding-block: 40px; }
+
+/* Layout contract: section controls vertical rhythm */
+section { padding-block: 120px; }
+@media (max-width: 768px) {
+  section { padding-block: 80px; }
+}
+.hero h2 { margin: 0 0 var(--space-16); color: var(--brand-blue); font-family: var(--font-family-headings); }
+
+.cases-grid { display:flex; gap: var(--space-24); flex-wrap:wrap; }
+.case-card { display:block; flex:1 1 220px; padding: var(--space-24); background: var(--system-background-medium); color: var(--system-text-black); text-decoration:none; border-radius:8px; }
+
+.case { padding: var(--space-32) 0; }
+
+/* When a `.case` article is inside a `.case-page`, remove its top padding so
+  the banner sits flush under the header. This is scoped and won't affect
+  non-case pages. */
+  .case-page .case { padding-top: 0; }
+.case-hero { height: 220px; background: var(--yampi-purple-light); border-radius:8px; margin-bottom: var(--space-24); display:flex; align-items:center; justify-content:center; color: var(--yampi-purple-dark); }
+
+.site-footer { padding: var(--space-16) 0; text-align:center; background: var(--system-componentes-gray); margin-top: var(--space-40); }
+
+@media (max-width:700px) {
+  .site-header .container { flex-direction:column; gap: var(--space-16); }
+  .cases-grid { flex-direction:column; }
+}
+
+/* Banner (Figma) */
+.banner { background: var(--system-background-medium); }
+.banner-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; }
+.banner-inner { max-width: var(--layout-max-width); margin: 0 auto; display:flex; gap: 24px; align-items:flex-start; position: relative; }
+.banner-left { flex: 1 1 auto; min-width: 0; }
+.label { display:inline-block; background: var(--brand-blue); color: var(--system-background-pure); padding: 4px 12px; font-size: 32px; font-family: var(--font-family-headings); letter-spacing: -1.6px; line-height:1; }
+.hero-lines { margin-top: var(--space-16); }
+.hero-lines { margin-top: var(--space-16); display:flex; flex-direction:column; gap: var(--space-8); }
+.hero-line { margin: 0; padding: 0; font-family: var(--font-family-headings); font-size: 56px; line-height: 1.18; color: var(--system-text-black); letter-spacing: -2.24px; max-width: 100%; }
+
+/* Stronger banner text rules to avoid overrides on small viewports */
+.banner .banner-left { display:flex; flex-direction:column; align-items:flex-start; }
+.banner .banner-left .hero-lines { gap: 8px; margin-top: 12px; }
+.banner .banner-left .hero-line { margin:0; line-height:1.08; }
+.banner-right { flex: 0 0 auto; max-width: 424px; width: 100%; height: auto; position: relative; overflow: visible; }
+
+/* Case-specific overrides so Yampi banner can use different sizing without
+  affecting the global Home banner. These apply only when an element has
+  the `.case-banner` class. */
+.banner--yampi .banner-outer { padding: 0; padding-top: 0; margin-top: 0; }
+.banner--yampi .banner-inner { padding: 48px 0; display:flex; gap:24px; align-items:flex-start; box-sizing:border-box; max-width:var(--layout-max-width); }
+  .banner--yampi .banner-right { flex: 0 0 auto; max-width: 567px; width: 100%; height: auto; }
+.banner--yampi .hero-line { color: var(--system-background-pure); }
+
+/* Full-bleed background for Yampi banner */
+.banner--yampi {
+  position: relative;
+  overflow: visible;
+}
+.banner--yampi::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  /* Decorative heart at top-left and a bottom white stripe via gradient */
+  background:
+    url('/assets/icons/Yampi-coracao.svg') left top / 997px 854px no-repeat,
+    linear-gradient(to bottom, var(--yampi-purple-dark) 0 calc(100% - 86px), var(--system-background-pure) calc(100% - 86px) 100%);
+  z-index: 0;
+}
+@media (max-width:900px) {
+  .banner--yampi::before {
+    /* On mobile, keep the decorative heart small and left aligned so it doesn't overwhelm the hero */
+    background:
+      url('/assets/icons/Yampi-coracao.svg') left top / contain no-repeat,
+      linear-gradient(to bottom, var(--yampi-purple-dark) 0 calc(100% - 86px), var(--system-background-pure) calc(100% - 86px) 100%);
+  }
+}
+
+.banner--yampi .banner-inner { position: relative; z-index: 2; }
+.hero-image { position: relative; }
+  .hero-image img { max-width: 424px; width: 100%; height: auto; object-fit: contain; object-position: center right; border-radius: 0 0 0 0; display:block; }
+.banner-divider {
+  width: 100%;
+  height: 4px;
+  background: #b3ccee;
+  margin: 0; /* removed bottom gap so text sits directly below the bar */
+  display: block; /* ensure the divider spans the full container width */
+  visibility: visible;
+}
+.banner-right { position: relative; }
+/* Remove the image-scoped pseudo-element — we render a full-width divider
+   using the `.banner-divider` element that follows the banner content so
+   the bar spans the full width of the banner area (as in the design). */
+.banner-right::after { display: none; }
+.banner-inner .banner-divider { display: none; }
+.banner-inner { margin-bottom: 0; }
+.banner-meta { width: 100%; display:flex; justify-content:flex-end; padding-top: var(--space-24); }
+.meta-text { max-width: 540px; width: 100%; text-align: right; font-family: var(--font-family-body); font-size: 20px; line-height:1.4; color: var(--system-text-black); }
+
+/* Ensure consistent spacing between the banner text and the contact buttons */
+.contact-buttons { margin-top: var(--space-32); display:flex; gap: var(--space-16); }
+
+@media (max-width:1000px) {
+  .banner-inner { flex-direction:column; align-items:flex-start; }
+  .banner-right { position:relative; width:100%; height:auto; }
+  .hero-image { position:relative; left:0; width:100%; height:auto; }
+  .hero-image img { width:100%; height:auto; object-fit: cover; }
+  .meta-text { text-align:left; width:100%; }
+  .banner-outer { padding: 48px 0; margin:150px auto; }
+
+/* Remove any top padding on the page container when it's a case page so the
+  banner sits directly under the header */
+  .case-page { padding-top: 0; }
+
+/* Strong overrides to ensure no gap between header and banner */
+.site-header + .container.case-page,
+.site-header + main.container.case-page {
+  margin-top: 0;
+  padding-top: 0;
+}
+.banner { margin-top: 0; }
+.banner--yampi { margin-top: 0; }
+.banner--yampi .banner-outer { padding-top: 0; margin-top: 0; }
+
+/* debug outlines removed */
+}
+
+/* breakpoints: desktop 1440 and tablet/mobile 900px */
+@media (max-width: var(--bp-wide)) {
+  .banner-outer { padding: 0; margin: 150px auto; }
+  .banner-inner { width: calc(100% - 2 * var(--space-100)); }
+}
+
+/* Ensure exact hero dimensions and image visibility on wide screens */
+@media (min-width: var(--bp-wide)) {
+  .cases-outer { max-width: var(--layout-max-width); width: 100%; }
+  .case-row { align-items: flex-end; }
+  .case-hero { max-width: var(--case-hero-width); width: 100%; height: auto; }
+  /* Force column heights and box-sizing so left and right align to same bottom */
+  .case-left, .case-right { height: 500px; box-sizing: border-box; margin: 0; padding: 0; }
+  .case-left * , .case-right * { box-sizing: border-box; }
+  .case-right .case-hero, .case-right .hero-inner { width: 100%; height: 100%; margin: 0; padding: 0; }
+  /* ensure image doesn't exceed container due to natural size or CSS elsewhere */
+  .case-hero img { max-width: 100%; max-height: 100%; height: 100%; width: 100%; display:block; }
+  .case-hero .hero-inner { position: relative; width: 100%; height: 100%; }
+  .case-right { flex: 0 0 auto; max-width: var(--case-hero-width); width: 100%; height: auto; display: flex; align-items: flex-end; }
+  .case-left { display: flex; flex-direction: column; justify-content: flex-end; }
+  .case-hero .hero-inner img {
+    position: absolute;
+    object-fit: cover;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    z-index: 999;
+  }
+}
+
+@media (max-width:900px) {
+  .banner-outer { padding-left: var(--space-24); padding-right: var(--space-24); padding-top: var(--space-48); }
+  .banner--yampi .banner-outer { padding-top: 0; }
+  .label { font-size: 28px; }
+  .hero-lines { gap: var(--space-4); }
+  .hero-line { font-size: 36px; line-height: 1.12; letter-spacing: -1.6px; }
+  .banner .banner-left .hero-lines { gap: 6px; }
+  .banner .banner-left .hero-line { line-height:1.05; }
+  .banner-inner { gap: var(--space-24); }
+  .banner-left, .banner-right { width: 100%; }
+  .banner-right { height: auto; }
+  .hero-image { position:relative; left:0; top:0; }
+  .hero-image img { width:100%; height:auto; object-fit: cover; }
+  .meta-text { width:100%; text-align:left; }
+  .contact-label { width:auto; }
+}
+
+/* Responsive token overrides: reduce large spacing tokens on smaller viewports so
+   full-bleed sections (banner, plan/process/solution blocks) don't become too tall. */
+@media (max-width:900px) {
+  :root {
+    --space-150: 48px;
+  }
+}
+
+@media (max-width:420px) {
+  :root {
+    --space-150: 32px;
+  }
+}
+
+/* Temporary, high-specificity mobile override to enforce compact hero spacing
+   - Purpose: address reported excessive vertical gaps on small viewports.
+   - Safe to remove once confirmed. It only applies at <=900px and targets
+     the exact banner structure used on the Home page. */
+@media (max-width:900px) {
+  /* Increase selector specificity to beat inherited rules */
+  .banner.banner--home .banner-inner .banner-left .hero-lines,
+  .banner .banner-inner .banner-left .hero-lines,
+  body .banner .banner-left .hero-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* compact gap between lines */
+    margin-top: 6px;
+    padding: 0;
+  }
+
+  .banner.banner--home .banner-inner .banner-left .hero-line,
+  .banner .banner-inner .banner-left .hero-line,
+  body .banner .banner-left .hero-line {
+    margin: 0;
+    padding: 0;
+    line-height: 1.02; /* tighten vertical rhythm */
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+
+  /* Prevent image from introducing extra vertical space near text */
+  .banner .banner-right, .banner .hero-image {
+    margin: 0;
+    padding: 0;
+    height: auto;
+  }
+}
+
+/* Contact styles moved to styles/components/contact-button.css */
+
+/* Cases styles refactored into styles/components/case.css */
+
+.cb-icon svg { display:block; margin:0; padding:0; width:40px; height:40px; }
+
+/* Contact page layout previously inline in contact.html */
+.contact-page {
+  padding: 48px;
+  max-width: 900px;
+  margin: 48px auto;
+  box-sizing: border-box;
+}
+

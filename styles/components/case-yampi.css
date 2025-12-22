@@ -1,0 +1,562 @@
+@import "../_tokens.css";
+
+/* Yampi case specific styles */
+.case-page { padding: 0 0 var(--space-32) 0; /* remove large global top/bottom margin so banner sits under header */ }
+.visually-hidden {
+	position: absolute;
+	height: 1px; width: 1px;
+	overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+
+/* Hide the global Projects subtitle and work desc on case pages */
+.work-top .desc, .projects-title-sub-text {
+	display: none;
+}
+.case-banner {
+	/* Container for the case banner; visual background handled by ::before */
+	position: relative;
+	width: 100%;
+	color: var(--system-background-pure);
+	border-radius: 0;
+	overflow: hidden;
+	margin: 0 0 var(--space-32) 0; /* remove top margin so banner can sit under header; match Home spacing */
+}
+
+/* Banner visuals for `.banner--yampi` are defined in styles/style.css so the
+	Home `.banner` structure can be reused without duplication. */
+
+.case-banner .banner-left { display:flex; flex-direction:column; gap:16px; }
+.case-banner .banner-logo,
+.banner--yampi .banner-logo,
+.banner--yampi .label.banner-logo { width:161px; height:56px; overflow:hidden; background: transparent; padding: 0; display: block; }
+.case-banner .banner-logo img { width:161px; height:56px; object-fit:contain; display:block; }
+.case-banner .hero-lines { display:flex; flex-direction:column; gap:8px; }
+.case-banner .hero-line { font-family: var(--font-family-headings); font-size:56px; line-height:1.2; letter-spacing:-2.24px; color:var(--system-background-pure); margin:0; }
+.case-pill { display:inline-block; background:var(--yampi-pink-pure); padding:4px 8px; border-radius:6px; }
+.case-pill-text { font-family: var(--font-family-body); font-weight:700; font-size:32px; color:var(--system-background-pure); }
+.case-banner .banner-right { max-width:567px; width:100%; height:auto; }
+.case-banner .banner-graphic { max-width:567px; width:100%; height:auto; border-radius:4px; }
+.case-title { font-family: var(--font-family-headings); font-size: 40px; margin: 0 0 8px 0; }
+.case-subtitle { font-family: var(--font-family-body); font-size: 18px; margin: 0; }
+.case-banner-image { max-width:420px; width:100%; height: auto; display:block; }
+
+/* Responsive images for Yampi case to prevent overflow and ensure correct scaling */
+.banner-graphic img,
+.case-context-image img,
+.process-right img,
+.solution-left img {
+	width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100%;
+	object-fit: contain;
+	object-position: center center; /* ensure focal point is centered */
+}
+
+/* Center images within their media containers both horizontally and vertically
+   when the visual should sit in the middle of the container. Use flex centering
+   on the container so images that don't use full width remain centered. */
+.banner-graphic, .block-media, .case-banner .banner-right, .case-context-image, .process-right, .solution-left, .results-icon-inner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Ensure block-media images keep border-radius while centered */
+.block-media img, .results-icon-inner img { border-radius: 8px; max-width: 100%; height: auto; display:block; object-fit: cover; object-position: center center; }
+
+.case-block { padding: var(--space-32) 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+.case-block h2 { font-family: var(--font-family-headings); font-size: 28px; margin-bottom: 16px; color: var(--system-text-black); }
+.block-grid { display:flex; gap: 24px; align-items:center; }
+.block-text { flex:1; }
+.block-media { max-width:420px; width:100%; }
+.block-media.wide { width: 100%; }
+.block-media img { width:100%; height:auto; display:block; border-radius:8px; }
+
+.results-grid { display:flex; gap: 24px; margin-top: 16px; }
+.result { background: var(--system-background-medium); padding: 20px; border-radius: 8px; flex:1; text-align:center; }
+.result h3 { margin: 0; font-size: 32px; color: var(--brand-blue); }
+.result p { margin: 8px 0 0 0; font-size: 14px; color: var(--system-text-black); }
+
+/* Context & Problem block styles */
+.case-context { display: flex; gap: var(--space-100); align-items: flex-start; }
+.case-context-left, .case-context-right { flex: 1; }
+.context-title {
+	font-family: var(--font-family-headings);
+	font-size: 32px;
+	font-weight: 400;
+	color: var(--yampi-purple-dark);
+	margin: 0;
+	line-height: 1;
+	letter-spacing: -1.6px;
+}
+.problem-title {
+	font-family: var(--font-family-headings);
+	font-size: 32px;
+	font-weight: 400;
+	color: var(--yampi-pink-pure);
+	margin: 0;
+	line-height: 1;
+	letter-spacing: -1.6px;
+	text-align: right;
+}
+.lead-text { font-family: var(--font-family-body); font-size: 20px; line-height: 1.4; color: var(--system-text-black); margin: 0; }
+.lead-text strong { font-weight: 700; }
+
+@media (max-width:900px) {
+	.block-grid { flex-direction:column; }
+	.block-media { width:100%; }
+	.case-banner { position: relative; left: 0; right: 0; width: 100%; height: auto; min-height: 0; }
+	.case-banner .banner-inner { flex-direction:column; align-items:flex-start; padding-top: calc(24px + 86px); }
+	.case-banner-image { width:100%; max-width:420px; }
+	.results-grid { flex-direction:column; }
+
+	/* Responsive adjustments for the case banner */
+	.case-banner .banner-inner { padding: 48px; gap: 24px; }
+	.case-banner .hero-line { font-size: 36px; letter-spacing: -1.6px; }
+	.case-banner .banner-right, .case-banner .banner-graphic { width:100%; height:auto; }
+}
+
+/* Yampi banner: precise layout and typography to match provided spec */
+
+.banner--yampi .banner-inner {
+	/* keep top padding large for hero spacing but remove horizontal padding */
+	padding: var(--space-150) 0 var(--space-32) 0;
+	gap: var(--space-80);
+	box-sizing: border-box;
+}
+
+.banner--yampi .banner-left {
+	flex: 1 1 auto;
+	min-width: 0; /* allow children to shrink inside flex */
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-16);
+}
+
+.banner--yampi .label.banner-logo,
+.banner--yampi .banner-logo {
+	width: 161px;
+	height: 56px;
+	overflow: hidden;
+	background: transparent;
+	padding: 0;
+	display: block;
+}
+
+.banner--yampi .hero-lines {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.banner--yampi .hero-line {
+	max-width: 100%;
+	font-family: var(--font-family-headings);
+	font-size: 56px;
+	font-weight: 400;
+	line-height: 1.20;
+	letter-spacing: -2.24px;
+	color: var(--system-background-pure);
+	margin: 0;
+}
+
+.banner--yampi .case-pill {
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap; /* keep text on one line */
+	border-radius: 0; /* remove rounded corners */
+	background: var(--yampi-pink-pure);
+}
+
+.banner--yampi .case-pill-text {
+	font-family: var(--font-family-body);
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 1.40;
+	letter-spacing: 0.32px;
+	color: var(--system-background-pure);
+}
+
+/* Right column explicit sizing (keeps image correct) */
+.banner--yampi .banner-right {
+	flex: 0 0 auto;
+	max-width: 567px;
+	width: 100%;
+	height: auto;
+}
+
+.banner--yampi .banner-graphic img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Context image / decorative shape helpers */
+.case-context-left { position: relative; }
+.case-context-shape { position: absolute; left: 0; top: 0; width: 100%; max-width:421px; height: auto; aspect-ratio: 421 / 339; background: var(--yampi-purple-light); border-radius: 64px; }
+.case-context-image { position: absolute; left: 34px; top: 39px; width: 100%; max-width:454px; height: auto; aspect-ratio: 454 / 320; background-size: cover; background-position: center; }
+
+@media (max-width:900px) {
+	.case-context { flex-direction:column; gap:var(--space-24); }
+	.case-context-shape, .case-context-image { position:relative; left:0; top:0; width:100%; height:auto; background-size:cover; }
+}
+
+/* new layout padding and text width for this block */
+.case-block.case-context { padding: 150px 0; }
+.case-context-right { max-width: 552px; }
+
+/* Context block sizing moved from inline styles */
+.case-context-inner { display:flex; flex-direction:column; gap:32px; }
+.case-context-inner .case-context-head { display:flex; flex-direction:column; gap:8px; }
+.case-context-left--sized { flex: 0 0 auto; max-width: 488px; width:100%; height: auto; position: relative; }
+.case-context-right--sized { flex: 0 0 auto; max-width: 590px; width:100%; }
+.case-context-head-left { max-width: 387px; width:100%; }
+.case-context-head-right { max-width: 273px; width:100%; text-align:left; padding-left:78px; }
+.case-context-copy { max-width: 552px; width: 100%; }
+.case-context-copy .lead-text { margin: 0 0 var(--space-24) 0; }
+.case-context-copy .lead-text + .lead-text { margin-top: 12px; }
+.case-context-image--receita {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* Planning block styles */
+.plan-block {
+	/* full-bleed purple background and vertical spacing so absolute inner layer has room */
+	position: relative; /* containing block for the absolute background layer */
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	width: 100vw;
+	background: var(--yampi-purple-dark);
+	border-radius: 150px 150px 0 0;
+	/* vertical spacing is controlled by the content (.plan-content) */
+	padding: 0;
+}
+/* Inner centered light container to match the design: width 1440, padding 150, rounded 150 */
+.plan-inner {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.plan-inner-column {
+	/* act as a full-bleed background layer matching the section height */
+	position: absolute;
+	inset: 0; /* top:0; right:0; bottom:0; left:0 */
+	/* maintain full-bleed horizontally relative to the viewport */
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	width: 100vw;
+	box-sizing: border-box;
+	background: var(--system-background-medium);
+	border-radius: 150px;
+	display: block;
+	z-index: 1; /* keep behind the content */
+}
+.plan-content {
+	position: relative;
+	z-index: 2;
+	max-width: var(--layout-max-width);
+	width: 100%;
+	box-sizing: border-box;
+	/* control vertical rhythm here; responsive between 48px and 96px */
+	padding-top: clamp(48px, 6vw, 96px);
+	padding-bottom: clamp(48px, 6vw, 96px);
+	/* restore lateral gutter (desktop) */
+	padding-left: var(--space-24);
+	padding-right: var(--space-24);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-100);
+}
+.plan-head { display:flex; flex-direction:column; gap:var(--space-8); align-items:flex-start; }
+.plan-subtitle-wrapper { padding-left:192px; white-space:nowrap; }
+.plan-title { font-family: var(--font-family-headings); font-size:32px; font-weight:400; line-height:1; letter-spacing:-1.6px; margin:0 0 var(--space-8) 0; color:var(--yampi-purple-dark); }
+.plan-subtitle { font-family: var(--font-family-headings); font-size:32px; font-weight:400; line-height:1; letter-spacing:-1.6px; margin:0; color:var(--yampi-pink-pure); text-align:right; }
+.plan-track { position:relative; width:100%; max-width: var(--cases-row-width); height:80px; margin:0 auto; }
+.plan-track .track-line { position:absolute; left:0; top:8px; width:100%; height:4px; background:var(--system-componentes-blue); opacity:0.5; border-radius:4px; z-index:1; }
+.plan-steps { display:flex; gap:36px; align-items:flex-start; position:relative; z-index:2; }
+.plan-step { display:flex; flex-direction:column; gap:8px; align-items:center; }
+.plan-step .dot { width:16px; height:16px; border-radius:50%; background:var(--yampi-pink-pure); }
+.plan-step .dot.purple { background: var(--yampi-purple-dark); }
+.plan-step .step-title { font-family: var(--font-family-body); font-size:20px; font-weight:700; text-align:center; color:var(--system-text-black); }
+
+
+
+
+@media (max-width:900px) {
+	.plan-block { padding: 0; border-radius: 48px 48px 0 0; overflow: visible; }
+	.plan-inner-column { width: 100%; padding: 0; border-radius: 48px; }
+	.plan-content { width: 100%; padding-top: 48px; padding-bottom: 48px; border-radius: 48px; }
+	.plan-subtitle-wrapper { padding-left: 0; }
+	.plan-track { width:100%; }
+	.plan-track .track-line { width:100%; }
+}
+
+/* Insights block - reuses the same two-layer pattern as .plan-block */
+.insights-block {
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	width: 100vw;
+	background: var(--yampi-purple-light);
+	border-radius: 150px 150px 0 0;
+	padding: 0;
+}
+.insights-inner { width: 100%; display:flex; justify-content:center; }
+.insights-inner-column {
+	position: absolute; inset: 0;
+	left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw;
+	background: var(--system-background-pure);
+	border-radius: 150px;
+	z-index: 1;
+}
+.insights-content {
+	position: relative; z-index: 2; max-width: var(--layout-max-width); width:100%; box-sizing: border-box;
+	/* Desktop: explicit 150px padding to match design container */
+	padding-top: var(--space-150); padding-bottom: var(--space-150);
+	padding-left: var(--space-150); padding-right: var(--space-150);
+	margin: 0 auto; display:flex; flex-direction:column; gap: var(--space-32);
+}
+.insights-title { font-family: var(--font-family-headings); font-size:32px; margin:0; color:var(--yampi-purple-dark); }
+
+@media (max-width:900px) {
+	.insights-block { border-radius: 48px 48px 0 0; }
+	.insights-inner-column { border-radius: 48px; }
+	.insights-content { padding-top: 48px; padding-bottom: 48px; padding-left: 24px; padding-right:24px; }
+}
+
+/* Processo block - reuses two-layer pattern (outer pink, inner purple positioned fill) */
+.process-block {
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	width: 100vw;
+	background: var(--yampi-pink-pure); /* outer pink */
+	border-radius: 150px 150px 0 0;
+	padding: 0; /* vertical spacing comes from .process-content */
+}
+.process-inner { width:100%; display:flex; justify-content:center; }
+.process-inner-column {
+	position: absolute; inset: 0;
+	left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw;
+	background: var(--yampi-purple-dark); /* inner purple */
+	/* only bottom corners rounded */
+	border-radius: 0 0 150px 150px;
+	z-index: 1;
+}
+.process-column { display:flex; flex-direction:column; gap:32px; max-width:100%; }
+.process-text-block { max-width: 517px; display:flex; flex-direction:column; gap:32px; }
+.process-row { display:flex; gap:100px; align-items:flex-start; }
+.process-left { flex:1; }
+.process-left { display:flex; flex-direction:column; gap:32px; }
+.process-right { max-width:523px; width:100%; height:auto; border-radius:8px; flex:0 0 auto; }
+.process-rich p { margin: 0; color: var(--system-background-pure); font-family: var(--font-family-body); font-size:20px; line-height:1.4; }
+.process-box { display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
+.process-box-bar { background: var(--yampi-purple-high); color: var(--system-background-pure); font-family: var(--font-family-body); font-weight:700; font-size:20px; padding: 2px 12px; display:inline-flex; align-items:center; justify-content:center; border: radius 0; }
+.process-box-list p { margin: 0; color: var(--system-background-pure); font-family: var(--font-family-body); font-size:20px; line-height:1.4; }
+.process-content {
+	position: relative; z-index: 2; max-width: var(--layout-max-width); width:100%; box-sizing: border-box;
+	padding-top: clamp(48px, 6vw, 96px); padding-bottom: clamp(48px, 6vw, 96px);
+	padding-left: var(--space-24); padding-right: var(--space-24);
+	margin: 0 auto; display:flex; flex-direction:column; gap: var(--space-32);
+}
+.process-title { font-family: var(--font-family-headings); font-size:32px; margin:0 0 8px 0; color:var(--yampi-pink-pure); max-width:517px; width:100%; line-height:1; letter-spacing:-1.6px; font-weight:400; }
+
+/* ensure the process block sits below the planning block without overlap */
+.plan-block + .process-block { margin-top: 0; }
+
+@media (max-width:900px) {
+	.process-block { border-radius: 48px 48px 0 0; }
+	.process-inner-column { border-radius: 0 0 48px 48px; }
+	.process-content { padding-top: 48px; padding-bottom: 48px; padding-left: 24px; padding-right:24px; }
+	.process-column { gap: 24px; }
+	.process-text-block { max-width:100%; }
+	.process-row { flex-direction:column; gap:24px; }
+	.process-right { width:100%; height:auto; min-height:200px; }
+}
+
+/* Solução block - two-layer pattern (outer purple-pure, inner pink) */
+.solution-block {
+	position: relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;
+	background: var(--yampi-purple-pure);
+	/* no rounding on the outer purple background */
+	border-radius: 0;
+	padding: 0;
+}
+.solution-inner { width:100%; display:flex; justify-content:center; }
+
+/* Prototype iframe styling (replaces inline styles) */
+.prototype-container iframe {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	max-width: 100%;
+	width: 800px;
+	height: 450px;
+	display: block;
+}
+.solution-inner-column { position:absolute; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; background: var(--yampi-pink-pure); /* only bottom corners rounded */ border-radius: 0 0 150px 150px; z-index:1; top: var(--space-150); bottom: var(--space-100); }
+.solution-content { position:relative; z-index:2; max-width:var(--layout-max-width); width:100%; box-sizing:border-box; padding-top: 100px; padding-bottom: 100px; padding-left:48px; padding-right:48px; margin:0 auto; display:flex; flex-direction:column; gap:var(--space-32); }
+.solution-row { display:flex; gap:100px; align-items:flex-start; }
+.solution-left { max-width:372px; width:100%; height:auto; border-radius:8px; flex:0 0 auto; }
+.solution-right { flex:1; }
+.solution-title { font-family:var(--font-family-headings); font-size:32px; color:var(--yampi-purple-dark); margin:0 0 8px 0; width:100%; }
+.solution-rich p { margin:0 0 var(--space-24) 0; color:var(--system-background-pure); font-family:var(--font-family-body); font-size:20px; line-height:1.4; }
+.solution-box { display:flex; flex-direction:column; gap:16px; }
+.solution-box-bar { padding:2px 12px; background:var(--yampi-purple-pure); color:var(--system-background-pure); font-weight:700; display:inline-flex; align-items:center; }
+.solution-box-list p { margin:0; color:var(--system-background-pure); font-size:20px; line-height:1.4; }
+
+/* Solution content widths were inline in HTML; move to CSS for responsiveness */
+.solution-lead {
+	max-width: 668px;
+	width: 100%;
+	font-size: 18px;
+	line-height: 1.6;
+}
+
+.solution-list {
+	max-width: 668px;
+	width: 100%;
+}
+
+/* ensure small screens scale down the solution blocks */
+@media (max-width:900px) {
+	.solution-lead, .solution-list { max-width: 100%; }
+}
+
+/* Explicit solution text styles (match Flutter snippet) */
+.solution-text-container { display:flex; flex-direction:column; gap:32px; }
+.solution-title { color: var(--yampi-purple-dark); font-family: var(--font-family-headings); font-size:32px; font-weight:400; line-height:1; letter-spacing:-1.6px; margin:0 0 8px 0; }
+.solution-lead { color: var(--system-background-pure); font-family: var(--font-family-body); font-size:20px; font-weight:400; line-height:1.4; letter-spacing:0.2px; }
+.solution-pill { display:inline-flex; align-items:center; padding:2px 12px; background: var(--yampi-purple-pure); color: var(--system-background-pure); font-family: var(--font-family-body); font-weight:700; font-size:20px; }
+.solution-list { color: var(--system-background-pure); font-family: var(--font-family-body); font-size:20px; line-height:1.4; }
+
+@media (max-width:900px) {
+	.solution-text-container { gap:16px; }
+	.solution-lead, .solution-list { width:100%; }
+}
+
+/* group pill + list with exact 16px spacing */
+.solution-group { display:flex; flex-direction:column; gap:8px; align-items: flex-start; }
+
+@media (max-width:900px) {
+	.solution-content { padding:48px; }
+	.solution-row { flex-direction:column; }
+	.solution-left { width:100%; height:auto; min-height:200px; }
+}
+
+@media (max-width:900px) {
+	.solution-inner-column { bottom: var(--space-48); }
+}
+
+/* Protótipo block (Figma embed) */
+.prototype-block {
+	position: relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;
+	background: var(--yampi-purple-pure);
+	border-radius: 0 0 150px 150px; /* bottom-left and bottom-right radii */
+	padding: 0;
+}
+.prototype-inner { width:100%; display:flex; justify-content:center; }
+.prototype-content { position:relative; z-index:2; max-width:var(--layout-max-width); width:100%; box-sizing:border-box; padding: 100px; margin:0 auto; display:flex; justify-content:center; align-items:center; }
+.prototype-container { width:100%; max-width:var(--layout-max-width); height: auto; display:flex; justify-content:center; align-items:center; box-sizing:border-box; overflow:auto; padding: 0 24px; }
+.prototype-container iframe { flex: 0 0 auto; width:100%; max-width:1100px; height:707px; border-radius:8px; }
+
+@media (max-width:900px) {
+	.prototype-content { padding:48px; }
+	.prototype-container { width:100%; height:auto; padding:24px; overflow:auto; }
+	/* keep iframe fixed at 800x450; allow scrolling on small viewports */
+	.prototype-container iframe { width:800px; height:450px; }
+}
+
+
+
+/* Two-layer reusable utility
+   Use on the section element: add `.two-layer-section`
+   Add `.two-layer-inner` to the centered inner wrapper, `.two-layer-fill` to the absolute background fill,
+   and `.two-layer-content` to the content container that controls padding and spacing.
+   This keeps existing block-specific classes intact while reducing duplication. */
+.two-layer-section {
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	width: 100vw;
+	padding: 0; /* vertical spacing controlled by .two-layer-content */
+}
+.two-layer-inner { width:100%; display:flex; justify-content:center; }
+.two-layer-fill {
+	position: absolute;
+	inset: 0; /* top:0; right:0; bottom:0; left:0 */
+	left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw;
+	box-sizing: border-box;
+	z-index: 1; /* sits behind content */
+}
+.two-layer-content {
+	position: relative;
+	z-index: 2;
+	max-width: var(--layout-max-width);
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	display:flex;
+	flex-direction:column;
+	gap: var(--space-100);
+}
+
+/* Results & Metrics block */
+.results-block { position: relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; background: var(--system-background-pure); padding:0; }
+.results-inner { width:100%; display:flex; justify-content:center; }
+.results-content { position:relative; z-index:2; max-width:var(--layout-max-width); width:100%; box-sizing:border-box; padding: var(--space-48) 0; margin:0 auto; display:flex; justify-content:center; }
+.results-container { width:100%; max-width: var(--layout-max-width); padding: 0 var(--space-24); box-sizing:border-box; display:flex; justify-content:center; }
+.results-card { width:100%; background: var(--system-background-medium); border-radius:75px; padding:75px; box-sizing:border-box; display:flex; flex-direction:column; gap:var(--space-32); }
+.results-head { display:flex; flex-direction:column; gap:var(--space-8); align-items:flex-start; }
+.results-title-left { font-family: var(--font-family-headings); font-size:32px; color: var(--yampi-purple-dark); margin:0; letter-spacing:-1.6px; line-height:1; font-weight:400; }
+.results-title-right { font-family: var(--font-family-headings); font-size:32px; color: var(--yampi-pink-pure); margin:0; letter-spacing:-1.6px; line-height:1; font-weight:400; }
+.results-pill { display:inline-flex; padding:2px 12px; background: var(--yampi-pink-pure); color: var(--system-background-pure); font-weight:700; font-family: var(--font-family-body); font-size:20px; }
+.results-icon-inner img { width:100%; height:100%; object-fit:cover; display:block; }
+.results-grid { display:flex; gap:100px; margin-top: var(--space-32); }
+.results-item { flex:1; display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center; }
+.results-icon { width: clamp(120px, 10vw, 150px); height: clamp(120px, 10vw, 150px); border-radius:50%; background: var(--yampi-purple-light); display:flex; justify-content:center; align-items:center; }
+.results-icon-inner { width: clamp(64px, 5.5vw, 80px); height: clamp(64px, 5.5vw, 80px); overflow:hidden; border-radius:50%; display:flex; justify-content:center; align-items:center; }
+ .results-icon-inner img { width:100%; height:100%; object-fit:cover; display:block; }
+.results-item-title { font-family: var(--font-family-headings); color: var(--yampi-purple-dark); font-size:22px; line-height:1.4; letter-spacing:-1.1px; }
+.results-item-copy { font-family: var(--font-family-body); color: var(--system-text-black); font-size:20px; line-height:1.4; }
+
+@media (max-width:900px) {
+ 	.results-content { padding: var(--space-48) 0; }
+ 	.results-card { padding: 32px; border-radius:48px; }
+ 	.results-grid { flex-direction:column; gap:24px; }
+ 	.results-container { padding: 0 24px; }
+}
+
+/* make the pill padding scale with tokens and content width */
+.results-pill { padding-block: var(--pill-padding-vertical); padding-inline: var(--pill-padding-horizontal); align-self:flex-start; white-space:nowrap; }
+
+@media (max-width:900px) {
+	.two-layer-section { border-radius: 48px 48px 0 0; }
+	.two-layer-fill { border-radius: 48px; }
+	.two-layer-content { padding-left:24px; padding-right:24px; }
+}
+
+/* Ensure solution block outer background has no radius even though .two-layer-section
+   applies rounded corners for most sections (override for this case). */
+.solution-block { border-radius: 0; }
+@media (max-width:900px) {
+	.solution-block { border-radius: 0; }
+	.solution-inner-column { border-radius: 0 0 48px 48px; }
+}
+
+
