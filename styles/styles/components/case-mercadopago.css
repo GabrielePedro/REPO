@@ -9,6 +9,7 @@
   background: var(--system-background-medium);
   overflow: hidden;
   box-sizing: border-box;
+  min-height: 770px; /* match container height from spec */
 }
 
 /* Decorative background — keep behind content */
@@ -19,7 +20,8 @@
   margin-left: -50vw;
   width: 100vw;
   top: 0;
-  height: 650px; /* fixed decorative background height */
+  /* decorative gradient panel that sits behind content */
+  height: 611px; /* match inner decorative height from spec */
   background: linear-gradient(90deg, #1A2C84 0%, #019EE3 100%);
   border-bottom-left-radius: 150px;
   border-bottom-right-radius: 150px;
@@ -28,13 +30,15 @@
 
 /* Inner container is the single source of layout truth */
 .mp-inner {
-  max-width: var(--layout-max-width);
+  /* center content constrained to 1440px, with 150px side gutters to match design */
+  max-width: 1440px;
   margin-inline: auto;
-  padding-inline: var(--space-24);
-  padding-block: 96px;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-block: 96px; /* top ~96px as in spec */
   display: grid;
-  grid-template-columns: 1fr var(--case-hero-width);
-  align-items: center;
+  grid-template-columns: 1fr 540px; /* left flexible, right fixed 540px per spec */
+  align-items: start;
   gap: 64px;
   position: relative;
   z-index: 1;
@@ -49,8 +53,8 @@
 .mp-left .mp-pill--spaced-small { margin-top: 8px; }
 .mp-left .mp-pill .pill-text { font-family: 'Red Hat Display', var(--font-family-body); font-weight:700; font-size:32px; color:#2E3640; }
 
-.mp-right { width: 100%; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-.mp-right img { width:100%; height:auto; object-fit:cover; object-position:center center; display:block; }
+.mp-right { width: 540px; height: 622px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.mp-right img { width:540px; height:622px; object-fit:cover; object-position:center center; display:block; }
 
 @media (max-width:1000px) {
   .mp-inner { grid-template-columns: 1fr; padding-block: 64px; gap: 40px; }
@@ -61,23 +65,119 @@
 }
 
 /* Context / Problem two-layer block styles */
-.context-block { position: relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; padding:0; }
-.context-inner { width:100%; display:flex; justify-content:center; }
-.context-fill { position:absolute; inset:0; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; background:#ECF0F7; border-bottom-left-radius:150px; border-bottom-right-radius:150px; z-index:1; }
-.context-content { position:relative; z-index:2; max-width:1440px; width:100%; box-sizing:border-box; margin:0 auto; padding-top:150px; padding-bottom:300px; padding-left:24px; padding-right:24px; }
-.context-row { display:flex; gap:100px; align-items:center; }
-.context-left { flex:0 0 522px; }
-.context-image { width:522px; height:500px; border-radius:8px; overflow:hidden; }
-.context-image { display:block; width:100%; height:auto; max-width:522px; border-radius:8px; object-fit:cover; }
-.context-right { flex:1 1 auto; min-width:0; }
-.context-head { position:relative; height:120px; }
-.context-pill { position:absolute; display:inline-flex; align-items:center; justify-content:center; padding:6px; }
-.context-pill-left { left:0; top:0; background:#50B4E9; color:#fff; }
-.context-pill-right { left:191px; top:55px; background:#FFE700; color:#2E3640; }
-.context-copy p { margin:0; font-family:'Red Hat Display'; font-size:20px; line-height:1.4; color:#2E3640; }
-.context-de { position:absolute; left:182px; top:32px; font-family:'Krona One'; font-size:32px; color:#2E3640; }
-.context-pill-text { color:#fff; font-family: 'Krona One'; font-size:32px; }
-.context-pill-text-dark { color:#2E3640; font-family: 'Krona One'; font-size:32px; }
+/* legacy context-block rules replaced by .mp- prefixed layout below */
+
+/* New mp-container layout (Context + Rule blocks) */
+.mp-container {
+  position: relative;
+  width: 1440px;
+  margin: 0 auto;
+  background: #ECF0F7;
+}
+/* Canvas to isolate the 1440px board from site grid */
+.mp-canvas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #ECF0F7;
+}
+.mp-canvas > * { width: 1440px; }
+
+/* Prevent inherited max-width rules from other global selectors */
+.mp-container,
+.mp-banner { max-width: none !important; }
+.mp-context {
+  position: relative;
+  padding: 150px 150px 300px;
+  background: #ECF0F7;
+  border-bottom-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+}
+
+.mp-context-row {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.mp-context-image img {
+  width: 522px;
+  height: 500px;
+  object-fit: cover;
+}
+.mp-context-content {
+  max-width: 668px;
+}
+.mp-title-stack {
+  position: relative;
+  width: 400px;
+  height: 100px; /* fixed height so absolutely positioned pills are relative to this box */
+  margin-bottom: 32px;
+}
+
+.pill {
+  position: absolute;
+  padding: 6px 12px;
+  font-family: 'Krona One', sans-serif;
+  font-size: 32px;
+  letter-spacing: -1.6px;
+  line-height: 1;
+}
+
+.pill-blue {
+  background: #50B4E9;
+  color: #fff;
+  top: 0;
+  left: 0;
+}
+
+.pill-yellow {
+  background: #FFE700;
+  color: #2E3640;
+  top: 55px;
+  left: 191px;
+}
+
+.pill-de {
+  position: absolute;
+  top: 32px;
+  left: 182px;
+  font-family: 'Krona One';
+  font-size: 32px;
+  color: #2E3640;
+}
+.mp-text {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  color: #2E3640;
+}
+.mp-rule {
+  position: relative;
+  margin-top: -200px;
+  padding: 0 150px 200px;
+}
+
+.mp-rule-row {
+  background: rgba(255, 231, 0, 0.2);
+  border-radius: 150px;
+  padding: 75px;
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+.mp-rule-visual {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(80, 180, 233, 0.3);
+  flex-shrink: 0;
+}
+.pill-small {
+  font-size: 22px;
+  margin: 24px 0;
+  display: inline-block;
+}
 
 @media (max-width:1000px) {
   .context-content { padding-top:48px; padding-bottom:48px; }

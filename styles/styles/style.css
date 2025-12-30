@@ -1,6 +1,22 @@
 @import "./_tokens.css";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Red+Hat+Display:wght@300;400;500;700&display=swap');
 
+/* Global base adjustments requested by design */
+body {
+  margin: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.mp-container {
+  position: relative;
+  width: 1440px;
+  min-height: 1410px;
+  background: #ECF0F7;
+  overflow: hidden;
+}
+
 * { box-sizing: border-box; }
 body {
   font-family: var(--font-family-body);
