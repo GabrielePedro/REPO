@@ -32,3 +32,16 @@
   case-specific layouts from pushing the copyright to the far right. */
 .footer-row .footer-contacts { display:flex !important; flex-direction:column !important; }
 .footer-row .footer-contacts .copyright { order: 99; align-self: flex-start; margin-top: var(--space-32); }
+
+
+/* Shared footer spacing: 75px above and below its content */
+.footer-outer {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+@media (max-width: 1000px) {
+  .footer-outer {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+}
