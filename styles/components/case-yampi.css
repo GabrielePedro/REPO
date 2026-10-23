@@ -568,30 +568,30 @@
   padding-bottom: 0;
 }
 .banner--yampi .banner-inner {
-  padding-top: 75px;
-  padding-bottom: 75px;
-  gap: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  gap: 40px;
 }
 .case-page .case-banner {
   margin-bottom: 0;
 }
 .case-page .case-block {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .case-page .case-block.case-context {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .case-page .plan-content,
 .case-page .insights-content,
 .case-page .process-content,
 .case-page .solution-content,
 .case-page .prototype-content {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .case-page .results-content {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
