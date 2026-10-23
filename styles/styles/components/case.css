@@ -1,7 +1,7 @@
 /* Case component styles - refactored from styles/style.css */
 @import "../_tokens.css";
 
-.cases-section { background: var(--system-background-medium); }
+.cases-section { background: var(--system-background-medium);  padding-top: 0; }
 /* Unified outer containers (layout contract) */
 .container,
 .banner-outer,
@@ -9,7 +9,7 @@
 .work-outer,
 .experience-outer,
 .skillset-outer,
-.footer-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; }
+.footer-outer { max-width: var(--layout-max-width); margin-inline: auto; width: 100%; box-sizing: border-box; }
 
 /* Ensure consistent section spacing is handled globally via `section` */
 
@@ -18,7 +18,7 @@
 .projects-section .projects-body { padding-top: 100px; }
 
 /* Projects header layout (moved from inline styles) */
-.projects-section .cases-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; }
+.projects-section .cases-outer { max-width: var(--layout-max-width); margin-inline: auto; width: 100%; box-sizing: border-box; }
 /* Header wrapper sized to Container(max-width:389, height:96) */
 .projects-section .projects-header-wrapper { max-width: 389px; width: 100%; height: 96px; position: relative; }
 /* Positioned(left:0, top:4) and vertical stacking with spacing: 10 */
@@ -63,7 +63,7 @@
 /* Keep UI/UX Design on a single line */
 .projects-section .projects-titles h2 { white-space: nowrap; display: inline-block; }
 
-.case-row { width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, var(--case-hero-width)); gap: 100px  ; align-items: end; box-sizing: border-box; overflow: hidden; margin-bottom: 100px; }
+.case-row { width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, var(--case-hero-width)); align-items: end; box-sizing: border-box; overflow: hidden; margin-bottom: 125px; }
 .case-row.reverse { grid-template-columns: 570px 1fr; }
 
 .case-left { min-width: 0; display: block; }
@@ -86,6 +86,11 @@
   align-self: flex-start;
 }
 
+/* Remove o espaçamento inferior da Atlas e do Mercado Pago */
+.cases-section .case-mercado-pago {
+  margin-bottom: 0;
+}
+
 .case-left { max-width: 560px; }
 
 .case-lead { font-family: var(--font-family-body); font-size: var(--case-lead-size); color: var(--system-text-black); line-height:1.6; margin: 0 0 40px 0; }
@@ -101,7 +106,7 @@
 .hero-variant-a { border-radius: 24px 100px 24px 100px; }
 /* Hero B: top-left:100px; top-right:24px; bottom-right:100px; bottom-left:24px */
 .hero-variant-b { border-radius: 100px 24px 100px 24px; }
-.hero-variant-c { border-radius: 100px 24px 24px 100px; }
+.hero-variant-c { border-radius: 24px 100px 24px 100px; }
 
 /* gradients for each hero variant */
 .hero-variant-a { background: linear-gradient(90deg, var(--atlas-gradient-start) 0%, var(--atlas-gradient-end) 100%); }
@@ -113,11 +118,56 @@
 .case-row .hero-inner img, .projects-section .hero-inner img { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; z-index: 2; border-radius: inherit; }
 
 /* Desktop (exact layout) */
-@media (min-width: var(--bp-wide)) {
-  .case-row { align-items: flex-end; }
-  .case-left, .case-right { height: 500px; box-sizing: border-box; margin: 0; padding: 0; }
-  .case-right { display:flex; align-items:flex-end; }
-  .case-left { display:flex; flex-direction:column; justify-content:flex-end; }
+/* Desktop: bloco de texto alinhado à base da imagem */
+@media (min-width: 1200px) {
+  .case-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--case-hero-width);
+    gap: 100px;
+    align-items: stretch;
+    overflow: visible;
+  }
+
+  .case-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: stretch;
+    min-width: 0;
+    max-width: 560px;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .case-right {
+    width: 100%;
+    height: 500px;
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .case-right .case-hero {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+  }
+
+  .case-right .hero-inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .case-right .hero-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
 }
 
 /* Responsive adjustments */
@@ -135,7 +185,7 @@
 
 /* Skillset section styles (added for Projects -> Skillset block) */
 .skillset-section { background: var(--system-background-medium); }
-.skillset-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; padding-block: 150px; }
+.skillset-outer { max-width: var(--layout-max-width); margin-inline: auto; width: 100%; box-sizing: border-boxpx; }
 .skillset-row { display:flex; gap:100px; align-items:flex-start; }
 .skillset-title { font-family: 'Krona One', var(--font-family-headings); font-size: 40px; color: var(--system-text-black); font-weight:400; line-height:1.10; letter-spacing:-2px; margin:0; }
 .skillset-columns { flex:1 1 auto; display:flex; flex-direction:column; gap:24px; }
@@ -166,7 +216,84 @@
   .skillset-row { flex-direction:column; gap:16px; }
   .skillset-title { margin-bottom:8px; }
 }
+/* Desktop: alinhamento dos cases, inclusive os invertidos */
+@media (min-width: 1200px) {
+  .case-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--case-hero-width);
+    gap: 100px;
+    align-items: stretch;
+    overflow: visible;
+  }
 
+  /* Imagem */
+  .case-row .case-right {
+    width: 100%;
+    height: var(--case-hero-height);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+
+  .case-row .case-hero {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .case-row .hero-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .case-row .hero-inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Texto alinhado à base da imagem */
+  .case-row .case-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: stretch;
+    width: 100%;
+    max-width: 560px;
+    min-width: 0;
+    height: var(--case-hero-height);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Case invertido: imagem à esquerda e texto à direita */
+  .case-row.reverse {
+    grid-template-columns: var(--case-hero-width) minmax(0, 1fr);
+  }
+  /* Remove somente o espaço inferior do Vega Feedback */
+.case-row.case-vega-feedback {
+  margin-bottom: 0;
+}
+}
+
+/* Projetos — UI/UX Design: divisão 50/50 entre texto e imagem */
+@media (min-width: 1200px) {
+  .projects-section .case-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .projects-section .case-row .case-left {
+    max-width: none;
+  }
+}
 
 /* Consistent 75px vertical rhythm for the Home page */
 .banner:not(.banner--yampi) {

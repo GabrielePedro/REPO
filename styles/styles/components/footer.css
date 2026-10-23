@@ -2,12 +2,12 @@
 
 /* Footer component (fixed last block across pages) */
 .footer-section { background: var(--system-text-black); color: var(--system-background-pure); }
-.footer-outer { max-width: var(--layout-max-width); margin-inline: auto; padding-inline: 24px; width: 100%; box-sizing: border-box; padding-block: 50px; }
+.footer-outer { max-width: var(--layout-max-width); margin-inline: auto; width: 100%; box-sizing: border-box; padding-block: 75px; }
 .footer-row { display:flex; gap:50px; align-items:center; }
 .footer-cta { max-width: 593px; width: 100%; font-family: 'Krona One', var(--font-family-headings); font-size:56px; line-height:1.2; letter-spacing:-2.24px; margin:0; }
 .footer-cta .brand-blue { color: var(--brand-blue); }
 
-.footer-contacts { max-width: 497px; width: 100%; display:flex; flex-direction:column; gap:0; }
+.footer-contacts { max-width: 100%; width: 100%; display:flex; flex-direction:column; gap:0; }
 .footer-contacts .contact-button { margin: 0; }
 .footer-contacts .contact-button + .contact-button { margin-top: -4px; }
 .footer-contacts .contact-button .cb-label { color: var(--system-background-pure); }
