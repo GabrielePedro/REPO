@@ -176,7 +176,7 @@
 .banner:not(.banner--yampi) .banner-outer {
   margin-top: 0;
   margin-bottom: 0;
-  padding-top: 75px;
+  padding-top: 0;
   padding-bottom: 0;
 }
 .cases-section {
