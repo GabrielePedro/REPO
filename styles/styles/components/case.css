@@ -166,3 +166,26 @@
   .skillset-row { flex-direction:column; gap:16px; }
   .skillset-title { margin-bottom:8px; }
 }
+
+
+/* Consistent 75px vertical rhythm for the Home page */
+.banner:not(.banner--yampi) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.banner:not(.banner--yampi) .banner-outer {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 75px;
+  padding-bottom: 0;
+}
+.cases-section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+.cases-section .case-row {
+  margin-bottom: 75px;
+}
+.cases-section .case-row:last-child {
+  margin-bottom: 0;
+}
