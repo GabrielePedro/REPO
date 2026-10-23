@@ -36,12 +36,12 @@
 
 /* Shared footer spacing: 75px above and below its content */
 .footer-outer {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 @media (max-width: 1000px) {
   .footer-outer {
-    padding-top: 75px;
-    padding-bottom: 75px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
