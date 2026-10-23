@@ -180,11 +180,11 @@
   padding-bottom: 0;
 }
 .cases-section {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .cases-section .case-row {
-  margin-bottom: 75px;
+  margin-bottom: 40px;
 }
 .cases-section .case-row:last-child {
   margin-bottom: 0;
