@@ -1,47 +1,86 @@
 /* =========================================
-   HOME — ANIMAÇÕES DE ENTRADA
+   HOME — ENTRADAS E MOVIMENTO
    ========================================= */
 
-/* Animação dos elementos durante o scroll */
+/* Conteúdo entra com um pequeno deslocamento, sem exagerar no movimento */
 body.motion-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-
-  transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: opacity, transform;
-}
-
-/* Estado visível */
-body.motion-ready [data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================================
-   HERO — TEXTO PALAVRA POR PALAVRA
-   ========================================= */
-
-body.motion-ready .hero-word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(100%);
-
+  transform: translate3d(0, 22px, 0);
   transition:
     opacity 650ms ease,
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body.motion-ready .hero-line.is-visible .hero-word {
+body.motion-ready [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
-/* =========================================
-   CURSOR PERSONALIZADO
-   ========================================= */
+/* Título do banner: movimento por linha, sem quebrar cada palavra */
+body.motion-ready .banner--home .hero-line {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 650ms ease,
+    transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--hero-line-delay, 0ms);
+}
+
+body.motion-ready .banner--home .hero-line.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Imagens: revelação horizontal com máscara */
+body.motion-ready [data-image-reveal] {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1000ms cubic-bezier(0.76, 0, 0.24, 1);
+  transition-delay: var(--image-reveal-delay, 0ms);
+}
+
+body.motion-ready [data-image-reveal].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* A imagem começa com leve escala e assenta durante a revelação */
+body.motion-ready .banner--home .hero-image img,
+body.motion-ready .cases-section .case-hero img {
+  transform: scale(1.045);
+  transition: transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+body.motion-ready .banner--home .hero-image.is-visible img,
+body.motion-ready .cases-section .case-hero.is-visible img {
+  transform: scale(1);
+}
+
+/* Cards de projeto: zoom sutil na imagem e elevação do visual */
+.cases-section .case-hero {
+  transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.cases-section .case-hero img {
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-origin: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cases-section .case-row .case-hero:hover {
+    transform: translateY(-5px);
+  }
+
+  .cases-section .case-row .case-hero:hover img {
+    transform: scale(1.055);
+  }
+
+  .cases-section .case-row .contact-button .cb-icon {
+    transition: transform 250ms ease;
+  }
+
+  .cases-section .case-row .contact-button:hover .cb-icon {
+    transform: translate(3px, -3px);
+  }
+}
 
 /* =========================================
    CURSOR PERSONALIZADO — ASTERISCO SVG
@@ -53,11 +92,8 @@ body.motion-ready .hero-line.is-visible .hero-word {
   left: 0;
   z-index: 9999;
   pointer-events: none;
-
   opacity: 0;
-  transform: translate3d(-100px, -100px, 0)
-    translate(-50%, -50%);
-
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
   transition: opacity 200ms ease;
   will-change: transform;
 }
@@ -66,47 +102,60 @@ body.motion-ready .hero-line.is-visible .hero-word {
   opacity: 1;
 }
 
-/* Imagem original do projeto */
 .custom-cursor img {
   display: block;
   width: 32px;
   height: 32px;
   object-fit: contain;
-
   animation: asterisco-rotate 5s linear infinite;
-
-  transition:
-    width 250ms ease,
-    height 250ms ease;
+  transition: width 250ms ease, height 250ms ease;
 }
 
-/* Aumenta ao passar por links e botões */
 .custom-cursor.is-hovering img {
   width: 46px;
   height: 46px;
 }
 
-/* Rotação contínua */
 @keyframes asterisco-rotate {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Em telas pequenas, o título não fica lento nem causa overflow */
+@media (max-width: 600px) {
+  body.motion-ready .banner--home .hero-line {
+    transition-duration: 550ms;
+    transform: translate3d(0, 14px, 0);
   }
 
-  to {
-    transform: rotate(360deg);
+  body.motion-ready [data-image-reveal] {
+    transition-duration: 750ms;
   }
 }
 
-/* Desativa em telas sensíveis ao toque */
+/* Desativa movimento não essencial quando solicitado pelo sistema */
 @media (hover: none), (pointer: coarse) {
-  .custom-cursor {
-    display: none;
-  }
+  .custom-cursor { display: none; }
 }
 
-/* Respeita a preferência por menos movimento */
 @media (prefers-reduced-motion: reduce) {
-  .custom-cursor {
-    display: none;
+  .custom-cursor { display: none; }
+
+  body.motion-ready [data-reveal],
+  body.motion-ready [data-reveal].is-visible,
+  body.motion-ready .banner--home .hero-line,
+  body.motion-ready .banner--home .hero-line.is-visible,
+  body.motion-ready [data-image-reveal],
+  body.motion-ready [data-image-reveal].is-visible,
+  body.motion-ready .banner--home .hero-image img,
+  body.motion-ready .cases-section .case-hero,
+  body.motion-ready .cases-section .case-hero img,
+  .cases-section .case-hero,
+  .cases-section .case-hero img {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+    animation: none;
   }
 }
