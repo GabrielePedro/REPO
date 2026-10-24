@@ -14,9 +14,13 @@
   <link rel="stylesheet" href="styles/components/case-yampi.css" />
   <link rel="stylesheet" href="styles/components/footer.css" />
   <link rel="stylesheet" href="styles/components/work.css" />
+  <link rel="stylesheet" href="styles/home.css" />
   </head>
 
-  <body>
+  <body class="case-page-body">
+    <div class="custom-cursor" aria-hidden="true">
+      <img src="assets/icons/asterisco_v2.svg" alt="" />
+    </div>
    <div id="site-header"></div>
 
 <script src="scripts/header.js"></script>
@@ -272,13 +276,14 @@
   <!-- Outros projetos removido conforme solicitado -->
 
   <script type="module" src="scripts/contact-button.js"></script>
+  <script src="scripts/home.js"></script>
   <!-- Footer (shared component) -->
   <footer class="footer-section">
     <div class="footer-outer">
       <div class="footer-row">
         <div class="footer-cta">
           <span class="brand-blue">Pronto para</span><br>
-          <span class="white">conversar, </span><span class="brand-blue">colaborar</span><span class="white"> ou contratar?</span>
+          <span class="white">conversar, </span><span class="brand-blue footer-word footer-word--collaborar">colaborar</span><span class="white"> ou </span><span class="brand-blue footer-word footer-word--contratar">contratar?</span>
         </div>
 
         <div class="footer-contacts">
