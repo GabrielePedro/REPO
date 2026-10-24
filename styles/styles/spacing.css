@@ -1,0 +1,46 @@
+
+/* =========================================
+   SISTEMA CENTRAL DE ESPAÇAMENTO
+   Gabriele Pedro — Product Designer
+   ========================================= */
+
+:root {
+  /* A. Espaçamento interno e entre elementos */
+  --spacing-inline: 24px;
+  --spacing-text: 40px;
+  --spacing-elements: 24px;
+
+  /* B. Espaçamento entre componentes */
+  --spacing-case: 100px;
+  --spacing-project: 100px;
+
+  /* C. Espaçamento entre seções */
+  --spacing-menu-banner: 75px;
+  --spacing-banner-cases: 150px;
+  --spacing-section: 150px;
+
+  /* D. Espaçamentos responsivos */
+  --spacing-section-tablet: 96px;
+  --spacing-section-mobile: 64px;
+  --spacing-case-mobile: 48px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  :root {
+    --spacing-inline: 24px;
+    --spacing-banner-cases: var(--spacing-section-tablet);
+    --spacing-section: var(--spacing-section-tablet);
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  :root {
+    --spacing-inline: 20px;
+    --spacing-banner-cases: var(--spacing-section-mobile);
+    --spacing-section: var(--spacing-section-mobile);
+    --spacing-case: var(--spacing-case-mobile);
+    --spacing-project: var(--spacing-case-mobile);
+  }
+}

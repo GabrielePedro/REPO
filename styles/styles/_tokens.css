@@ -45,7 +45,10 @@
   --mercado-pago-blue-extra-light-20: #50b4e9;
   --mercado-pago-yellow-extra-light-30: #ffe700;
 
-  /* espaçamentos */
+   /* =========================================
+     ESPAÇAMENTOS — ESCALA BASE
+     ========================================= */
+
   --space-0: 0px;
   --space-4: 4px;
   --space-8: 8px;
@@ -60,6 +63,30 @@
   --space-100: 100px;
   --space-150: 150px;
   --space-200: 200px;
+
+  /* =========================================
+     ESPAÇAMENTOS — SEMÂNTICOS
+     ========================================= */
+
+  /* Menu e banner */
+  --spacing-menu-banner: var(--space-75);
+
+  /* Linha divisória e texto do banner */
+  --spacing-banner-divider-text: var(--space-40);
+
+  /* Banner e cases */
+  --spacing-banner-cases: var(--space-150);
+
+  /* Distância entre componentes */
+  --spacing-between-cases: var(--space-100);
+  --spacing-between-projects: var(--space-100);
+
+  /* Cabeçalho da seção de projetos */
+  --spacing-projects-header: var(--space-100);
+
+  /* Espaçamento das seções */
+  --spacing-section-desktop: var(--space-150);
+  --spacing-section-mobile: var(--space-75);
 
   /* tipografia */
   --font-family-headings: 'Krona One', Arial, sans-serif;

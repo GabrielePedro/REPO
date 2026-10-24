@@ -24,16 +24,6 @@ body {
 nav a { margin-left: var(--space-24); color: var(--system-text-black); text-decoration:none; }
 
 .hero { padding-block: 75px; }
-/* Home: banner com espaçamento superior de 75px */
-section.banner {
-  padding-top: 75px;
-}
-/* Layout contract: section controls vertical rhythm */
-section { padding-block: 150px; }
-@media (max-width: 768px) {
-  
-  section { padding-block: 75px; }
-}
 
 .hero h2 { margin: 0 0 var(--space-16); color: var(--brand-blue); font-family: var(--font-family-headings); }
 
@@ -499,4 +489,198 @@ section { padding-block: 150px; }
   .header-nav a {
     transition: none;
   }
+}
+
+/* =========================================
+   HOME — SISTEMA DE ESPAÇAMENTO
+   Fonte centralizada das regras verticais
+   ========================================= */
+
+
+/* -----------------------------------------
+   1. BANNER
+   ----------------------------------------- */
+
+/* Espaçamento entre o menu fixo e o conteúdo */
+.home-page main > .banner--home {
+  padding-top: var(--spacing-menu-banner);
+  padding-bottom: var(--spacing-banner-cases);
+  margin: 0;
+}
+
+/*
+  O espaçamento vertical pertence à seção.
+  O container mantém o espaçamento lateral responsivo,
+  mas não acrescenta espaço vertical duplicado.
+*/
+.home-page .banner--home .banner-outer {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Espaçamento entre a linha divisória e o texto */
+.home-page .banner--home .banner-meta {
+  padding-top: var(--spacing-banner-divider-text);
+}
+
+
+/* -----------------------------------------
+   2. CASES PRINCIPAIS
+   ----------------------------------------- */
+
+/*
+  O banner já controla o espaço antes dos cases.
+  A seção de cases não adiciona espaço no topo.
+  Mantemos espaço no final para separar os cases
+  da próxima seção.
+*/
+.home-page main > .cases-section {
+  padding-top: 0;
+  padding-bottom: var(--spacing-section-desktop);
+  margin: 0;
+}
+
+/* Espaçamento padronizado entre cases */
+.home-page .cases-section .case-row {
+  margin-bottom: var(--spacing-between-cases);
+}
+
+/* O último case não recebe margem adicional */
+.home-page .cases-section .case-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* -----------------------------------------
+   3. COMO TRABALHO
+   ----------------------------------------- */
+
+/*
+  Mantém o espaçamento atual da seção.
+  Os elementos internos também preservam seus gaps.
+*/
+.home-page main > .work-section {
+  padding-block: var(--spacing-section-desktop);
+  margin: 0;
+}
+
+
+/* -----------------------------------------
+   4. EXPERIÊNCIA
+   ----------------------------------------- */
+
+/* Mantém o espaçamento atual da seção */
+.home-page main > .experience-section {
+  padding-block: var(--spacing-section-desktop);
+  margin: 0;
+}
+
+
+/* -----------------------------------------
+   5. PROJETOS UI/UX
+   ----------------------------------------- */
+
+/* Mantém o espaçamento externo da seção */
+.home-page main > .projects-section {
+  padding-block: var(--spacing-section-desktop);
+  margin: 0;
+}
+
+/* Distância entre o cabeçalho e o primeiro projeto */
+.home-page .projects-section .projects-header {
+  padding-bottom: var(--spacing-projects-header);
+}
+
+/* Distância entre os projetos */
+.home-page .projects-section .case-row {
+  margin-bottom: var(--spacing-between-projects);
+}
+
+/* O último projeto não recebe margem adicional */
+.home-page .projects-section .case-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* -----------------------------------------
+   6. SKILLSET
+   ----------------------------------------- */
+
+/* Preserva o espaçamento geral existente */
+.home-page main > .skillset-section {
+  padding-block: var(--spacing-section-desktop);
+  margin: 0;
+}
+
+
+/* =========================================
+   HOME — RESPONSIVIDADE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  /* Banner: mantém 75px do menu e 150px até os cases */
+  .home-page main > .banner--home {
+    padding-top: var(--spacing-menu-banner);
+    padding-bottom: var(--spacing-banner-cases);
+  }
+
+  /* Evita que o container acrescente espaço vertical */
+  .home-page .banner--home .banner-outer {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Cases */
+  .home-page main > .cases-section {
+    padding-top: 0;
+    padding-bottom: var(--spacing-section-mobile);
+  }
+
+  .home-page .cases-section .case-row {
+    margin-bottom: var(--spacing-between-cases);
+  }
+
+  /* Como Trabalho: mantém o espaçamento atual */
+  .home-page main > .work-section {
+    padding-block: var(--spacing-section-mobile);
+  }
+
+  /* Experiência: mantém o espaçamento atual */
+  .home-page main > .experience-section {
+    padding-block: var(--spacing-section-mobile);
+  }
+
+  /* Projetos */
+  .home-page main > .projects-section {
+    padding-block: var(--spacing-section-mobile);
+  }
+
+  .home-page .projects-section .projects-header {
+    padding-bottom: var(--spacing-projects-header);
+  }
+
+  .home-page .projects-section .case-row {
+    margin-bottom: var(--spacing-between-projects);
+  }
+
+  /* Skillset */
+  .home-page main > .skillset-section {
+    padding-block: var(--spacing-section-mobile);
+  }
+}
+
+
+/* =========================================
+   HOME — AJUSTES EM TELAS PEQUENAS
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .home-page .banner--home .banner-meta {
+    padding-top: var(--spacing-banner-divider-text);
+  }
+
 }
