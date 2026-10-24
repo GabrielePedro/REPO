@@ -159,3 +159,24 @@ body.motion-ready .cases-section .case-hero.is-visible img {
     animation: none;
   }
 }
+
+
+/* Imagens dos cases: link acessível e área clicável */
+.cases-section .case-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.cases-section .case-image-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cases-section .case-image-link:focus-visible {
+  outline: 3px solid #1E70E5;
+  outline-offset: 4px;
+}
