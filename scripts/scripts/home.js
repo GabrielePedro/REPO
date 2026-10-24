@@ -14,7 +14,7 @@ const reduceMotion = window.matchMedia(
 if (!reduceMotion) {
   // Elementos que aparecem conforme a página rola
   const revealElements = document.querySelectorAll(
-    ".banner-meta, .contact-buttons, .case-row, .work-top, .work-card"
+    ".banner-meta, .contact-buttons, .case-row, .work-top, .work-card, .skillset-block"
   );
 
   revealElements.forEach((element) => {

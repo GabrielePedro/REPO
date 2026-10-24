@@ -110,3 +110,54 @@ body.motion-ready .hero-line.is-visible .hero-word {
     display: none;
   }
 }
+
+
+/* =========================================
+   HOME — MOVIMENTO DOS CÍRCULOS DE COMO TRABALHO
+   ========================================= */
+
+.work-section .work-card .badge {
+  transform-origin: center;
+  animation: work-badge-breathe 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.work-section .work-card:nth-child(2) .badge {
+  animation-delay: -1.8s;
+}
+
+.work-section .work-card:nth-child(3) .badge {
+  animation-delay: -3.6s;
+}
+
+.work-section .work-card .badge img {
+  transform-origin: center;
+  animation: work-icon-drift 5.5s ease-in-out infinite;
+}
+
+.work-section .work-card:nth-child(2) .badge img {
+  animation-delay: -1.8s;
+}
+
+.work-section .work-card:nth-child(3) .badge img {
+  animation-delay: -3.6s;
+}
+
+@keyframes work-badge-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+@keyframes work-icon-drift {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.045) rotate(2deg); }
+}
+
+/* Evita animações permanentes quando a pessoa prefere movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .work-section .work-card .badge,
+  .work-section .work-card .badge img {
+    animation: none !important;
+    will-change: auto;
+  }
+}
