@@ -14,8 +14,13 @@
 /* Ensure consistent section spacing is handled globally via `section` */
 
 /* Projects section spacing */
-.projects-section .projects-header { padding-bottom: 100px; }
-.projects-section .projects-body { padding-top: 100px; }
+.projects-section .projects-header {
+  padding-bottom: var(--spacing-projects-header);
+}
+
+.projects-section .projects-body {
+  padding-top: var(--spacing-projects-header);
+}
 
 /* Projects header layout (moved from inline styles) */
 .projects-section .cases-outer { max-width: var(--layout-max-width); margin-inline: auto; width: 100%; box-sizing: border-box; }
@@ -63,7 +68,7 @@
 /* Keep UI/UX Design on a single line */
 .projects-section .projects-titles h2 { white-space: nowrap; display: inline-block; }
 
-.case-row { width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, var(--case-hero-width)); align-items: end; box-sizing: border-box; overflow: hidden; margin-bottom: 125px; }
+.case-row { width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, var(--case-hero-width)); align-items: end; box-sizing: border-box; overflow: hidden; margin-bottom:  var(--spacing-between-cases); }
 .case-row.reverse { grid-template-columns: 570px 1fr; }
 
 .case-left { min-width: 0; display: block; }
@@ -173,7 +178,7 @@
 /* Responsive adjustments */
 @media (max-width:1000px) {
   .cases-outer { padding: 0; }
-  .case-row { grid-template-columns: 1fr; gap: 48px; align-items: start; height: auto; margin-bottom: 48px; }
+  .case-row { grid-template-columns: 1fr; gap: 48px; align-items: start; height: auto; margin-bottom:  var(--spacing-between-cases); }
   .case-right, .case-left { width: 100%; }
   .case-hero { width: 100%; height: auto; aspect-ratio: 4/3; }
   .case-left { max-width: 100%; }
