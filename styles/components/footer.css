@@ -45,3 +45,27 @@
     padding-bottom: 40px;
   }
 }
+
+
+/* CTA do rodapé — alternância suave entre azul e branco */
+.footer-cta .footer-word {
+  display: inline-block;
+  color: var(--brand-blue);
+  animation: footer-word-color 3.6s ease-in-out infinite;
+}
+
+.footer-cta .footer-word--contratar {
+  animation-delay: -1.8s;
+}
+
+@keyframes footer-word-color {
+  0%, 100% { color: var(--brand-blue); }
+  50% { color: var(--system-background-pure); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-cta .footer-word {
+    animation: none;
+    color: var(--brand-blue);
+  }
+}
