@@ -5,21 +5,25 @@
    ========================================= */
 
 :root {
-  /* A. Espaçamento interno e entre elementos */
+  /* Espaçamento horizontal */
   --spacing-inline: 24px;
+
+  /* Espaçamento entre textos e elementos */
   --spacing-text: 40px;
   --spacing-elements: 24px;
+  --spacing-banner-divider-text: 40px;
 
-  /* B. Espaçamento entre componentes */
-  --spacing-case: 100px;
-  --spacing-project: 100px;
+  /* Espaçamento entre cases e projetos */
+  --spacing-between-cases: 100px;
+  --spacing-between-projects: 100px;
+  --spacing-projects-header: 100px;
 
-  /* C. Espaçamento entre seções */
+  /* Espaçamento entre seções */
   --spacing-menu-banner: 75px;
   --spacing-banner-cases: 150px;
-  --spacing-section: 150px;
+  --spacing-section-desktop: 150px;
 
-  /* D. Espaçamentos responsivos */
+  /* Responsividade */
   --spacing-section-tablet: 96px;
   --spacing-section-mobile: 64px;
   --spacing-case-mobile: 48px;
@@ -30,7 +34,7 @@
   :root {
     --spacing-inline: 24px;
     --spacing-banner-cases: var(--spacing-section-tablet);
-    --spacing-section: var(--spacing-section-tablet);
+    --spacing-section-desktop: var(--spacing-section-tablet);
   }
 }
 
@@ -39,8 +43,9 @@
   :root {
     --spacing-inline: 20px;
     --spacing-banner-cases: var(--spacing-section-mobile);
-    --spacing-section: var(--spacing-section-mobile);
-    --spacing-case: var(--spacing-case-mobile);
-    --spacing-project: var(--spacing-case-mobile);
+    --spacing-section-desktop: var(--spacing-section-mobile);
+    --spacing-between-cases: var(--spacing-case-mobile);
+    --spacing-between-projects: var(--spacing-case-mobile);
+    --spacing-projects-header: var(--spacing-case-mobile);
   }
 }
